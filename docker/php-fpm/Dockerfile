@@ -1,6 +1,6 @@
 FROM php:8.1-fpm-alpine
 
-WORKDIR /
+WORKDIR "/"
 
 RUN apk add --no-cache \
 #      php8-ctype \
@@ -38,8 +38,8 @@ RUN apk add libzip-dev
 RUN docker-php-ext-install pdo pdo_pgsql zip bcmath
 
 
-RUN chown -R www-data:www-data /app
+RUN chown -R www-data:www-data /var/www
 
-WORKDIR /app
+WORKDIR "/var/www"
 
 #ctype curl dom fileinfo json mbstring openssl pcre pdo tokenizer xml
