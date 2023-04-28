@@ -36,7 +36,7 @@ services:
     volumes:
     - ./backend:/var/www
     working_dir: /var/www
-    command: php artisan migrate
+    command: docker-php-ext-install pdo pdo_pgsql && php artisan migrate
 
   composer:
     image: composer:latest

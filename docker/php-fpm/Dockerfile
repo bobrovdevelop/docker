@@ -36,7 +36,7 @@ RUN apk add --no-cache \
 RUN apk add libzip-dev
 
 RUN docker-php-ext-install pdo pdo_pgsql zip bcmath
-RUN docker-php-ext-enable pdo_pgsql
+RUN docker-php-ext-enable pdo pdo_pgsql
 RUN chown -R www-data:www-data /var/www
 
 WORKDIR "/var/www"
