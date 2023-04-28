@@ -1,5 +1,7 @@
 FROM php:8.1-fpm-alpine
 
+WORKDIR /
+
 RUN apk add --no-cache \
 #      php8-ctype \
 #      php8-curl \
@@ -34,6 +36,7 @@ RUN apk add --no-cache \
 RUN apk add libzip-dev
 
 RUN docker-php-ext-install pdo pdo_pgsql zip bcmath
+
 
 RUN chown -R www-data:www-data /app
 
