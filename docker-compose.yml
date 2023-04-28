@@ -21,7 +21,7 @@ services:
       - ./backend:/var/www
 
   php-cli-key-generate:
-    image: php:8.1-cli-alpine
+    build: ./docker/php-cli
     depends_on:
       - php-fpm
     volumes:
@@ -30,13 +30,13 @@ services:
     command: php artisan key:generate
 
   php-cli-migrate:
-    image: php:8.1-cli-alpine
+    build: ./docker/php-cli
     depends_on:
       - php-fpm
     volumes:
     - ./backend:/var/www
     working_dir: /var/www
-    command: docker-php-ext-install pdo pdo_pgsql && php artisan migrate
+    command: php artisan migrate
 
   composer:
     image: composer:latest
