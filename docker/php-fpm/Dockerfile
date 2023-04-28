@@ -35,5 +35,8 @@ RUN apk add libzip-dev
 
 RUN docker-php-ext-install pdo pdo_pgsql zip bcmath
 
+RUN chown -R www-data:www-data /app
+
 WORKDIR /app
+
 #ctype curl dom fileinfo json mbstring openssl pcre pdo tokenizer xml
