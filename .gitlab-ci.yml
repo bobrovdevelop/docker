@@ -1,0 +1,18 @@
+stages:
+  - deploy
+
+.deploy:
+  stage: deploy
+  image: alpine:3.16.1
+  before_script:
+    - |
+      apk --update add --quiet --no-cache openssh-client bind-tools
+      eval $(ssh-agent -s)
+      echo "$SSH_PRIVATE_KEY" | ssh-add -
+
+deploy:develop:
+  extends:
+    - .deploy
+  script:
+    - host 185.5.248.197
+    - ssh -o StrictHostKeyChecking=no root@185.5.248.197 "touch test"
