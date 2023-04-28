@@ -21,7 +21,7 @@ services:
       - ./backend:/var/www
 
   php-cli-key-generate:
-    image: php:8-cli-alpine
+    image: php:8.1-cli-alpine
     depends_on:
       - php-fpm
     volumes:
@@ -30,7 +30,7 @@ services:
     command: php artisan key:generate
 
   php-cli-migrate:
-    image: php:8-cli-alpine
+    image: php:8.1-cli-alpine
     depends_on:
       - php-fpm
     volumes:
