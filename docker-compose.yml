@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./backend:/var/www
+      - ./backend:/var/www:rw
 
 #  php-cli-key-generate:
 #    build: ./docker/php-cli
