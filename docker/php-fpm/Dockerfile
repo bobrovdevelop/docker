@@ -37,6 +37,10 @@ RUN apk add libzip-dev
 
 RUN docker-php-ext-install pdo pdo_pgsql zip bcmath
 RUN docker-php-ext-enable pdo pdo_pgsql
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer --quiet
+
 RUN chown -R www-data:www-data /var/www
 
 WORKDIR "/var/www"

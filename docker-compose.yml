@@ -20,32 +20,32 @@ services:
     volumes:
       - ./backend:/var/www
 
-  php-cli-key-generate:
-    build: ./docker/php-cli
-    depends_on:
-      - php-fpm
-    volumes:
-      - ./backend:/var/www
-    working_dir: /var/www
-    command: php artisan key:generate
+#  php-cli-key-generate:
+#    build: ./docker/php-cli
+#    depends_on:
+#      - php-fpm
+#    volumes:
+#      - ./backend:/var/www
+#    working_dir: /var/www
+#    command: php artisan key:generate
+#
+#  php-cli-migrate:
+#    build: ./docker/php-cli
+#    depends_on:
+#      - php-fpm
+#    volumes:
+#    - ./backend:/var/www
+#    working_dir: /var/www
+#    command: php artisan migrate
 
-  php-cli-migrate:
-    build: ./docker/php-cli
-    depends_on:
-      - php-fpm
-    volumes:
-    - ./backend:/var/www
-    working_dir: /var/www
-    command: php artisan migrate
-
-  composer:
-    image: composer:latest
-    depends_on:
-      - php-fpm
-    volumes:
-    - ./backend:/var/www
-    working_dir: /var/www
-    command: composer install
+#  composer:
+#    image: composer:latest
+#    depends_on:
+#      - php-fpm
+#    volumes:
+#    - ./backend:/var/www
+#    working_dir: /var/www
+#    command: composer install
 
   db:
     image: postgres:alpine
