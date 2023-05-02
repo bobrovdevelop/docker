@@ -1,7 +1,5 @@
 FROM php:8.1-fpm-alpine
 
-USER www-data
-
 WORKDIR "/"
 
 RUN apk add --no-cache \
@@ -45,4 +43,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --fil
 RUN chown -R www-data:www-data /var/www
 
 WORKDIR "/var/www"
+USER www-data
 #ctype curl dom fileinfo json mbstring openssl pcre pdo tokenizer xml
