@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5568e6b-122b-44cd-a6b5-4652e90853e9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker/php-fpm/laravel-worker.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/php-fpm/laravel-worker.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -199,7 +200,7 @@
       <workItem from="1682665009708" duration="10035000" />
       <workItem from="1683011136494" duration="856000" />
       <workItem from="1683030424301" duration="3531000" />
-      <workItem from="1683095546262" duration="8865000" />
+      <workItem from="1683095546262" duration="9052000" />
     </task>
     <servers />
   </component>
