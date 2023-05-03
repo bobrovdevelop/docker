@@ -18,6 +18,6 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
     - name: connect and pull
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "touch /etc/nginx/maintenance && cd ${{ secrets.WORK_DIR }} && git pull && docker compose stop && docker compose build php-fpm supervisor redis && docker compose up -d web db php-fpm supervisor redis && rm /etc/nginx/maintenance && exit"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "touch /etc/nginx/maintenance && cd ${{ secrets.WORK_DIR }} && git pull && docker compose stop && docker compose build php-fpm supervisor && docker compose up -d web db php-fpm supervisor redis && rm /etc/nginx/maintenance && exit"
     - name: cleanup
       run: rm -rf ~/.ssh

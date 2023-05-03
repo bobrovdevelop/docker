@@ -23,7 +23,7 @@ services:
     command: supervisord
 
   redis:
-    image: 7.0-alpine
+    image: redis:7.0-alpine
 
   php-fpm:
     build: ./docker/php-fpm
