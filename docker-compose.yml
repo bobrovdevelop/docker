@@ -62,6 +62,5 @@ services:
   front:
     image: node:20-alpine
     volumes:
-      - ./front:/front
-    working_dir: /front
-    command: sh -c "npm install && npm run build"
+      - ./front:/var/www
+    working_dir: /var/www
