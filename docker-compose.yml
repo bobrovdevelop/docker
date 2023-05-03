@@ -22,6 +22,9 @@ services:
       - ./docker/php-fpm/laravel-worker.conf:/etc/supervisord.conf
     command: supervisord
 
+  redis:
+    image: 7.0-alpine
+
   php-fpm:
     build: ./docker/php-fpm
     restart: always
