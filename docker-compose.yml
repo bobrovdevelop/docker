@@ -20,7 +20,7 @@ services:
     volumes:
       - ./backend:/var/www:rw
       - ./docker/php-fpm/laravel-worker.conf:/etc/supervisord.conf
-#    command: supervisorctl start laravel-worker:*
+    command: supervisord
 
   php-fpm:
     build: ./docker/php-fpm
