@@ -44,6 +44,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --fil
 
 RUN chown -R www-data:www-data /var/www
 
+RUN apk add  supervisor && \
+    rm -rf /var/cache/apk/*
+
 WORKDIR "/var/www"
 #USER www-data
 #ctype curl dom fileinfo json mbstring openssl pcre pdo tokenizer xml
