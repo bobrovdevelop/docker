@@ -13,8 +13,13 @@ services:
       - 8081:80
 
   supervisor:
-    build: ./docker/php-fpm
+    build:
+      dockerfile: ./docker/php-fpm
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     restart: always
+
     depends_on:
       - php-fpm
     volumes:
