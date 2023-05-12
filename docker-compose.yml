@@ -29,10 +29,9 @@ services:
     build:
       dockerfile: ./docker/php-fpm/Dockerfile
       args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
+        - UID=998
+        - GID=997
     restart: always
-
     depends_on:
       - db
     volumes:
