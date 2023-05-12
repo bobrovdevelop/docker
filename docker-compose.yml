@@ -28,9 +28,6 @@ services:
   php-fpm:
     build:
       dockerfile: ./docker/php-fpm/Dockerfile
-      args:
-        - UID=998
-        - GID=997
     restart: always
 
     depends_on:
