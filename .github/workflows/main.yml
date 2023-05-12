@@ -20,7 +20,8 @@ jobs:
     - name: connect and pull
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "touch /home/laravel/maintenance &&
         cd ${{ secrets.WORK_DIR }} &&
-        git pull && docker compose stop && docker compose build php-fpm supervisor &&
+        git pull && docker compose stop &&
+        docker compose build php-fpm supervisor &&
         docker compose up -d web db php-fpm supervisor redis &&
         rm /home/laravel/maintenance && exit"
     - name: cleanup
