@@ -22,7 +22,7 @@ jobs:
         cd ${{ secrets.WORK_DIR }} &&
         git pull && docker compose stop &&
         docker compose build php-fpm  &&
-        docker compose up -d web db php-fpm supervisor redis &&
+        docker compose up -d web db php-fpm redis &&
         rm /home/laravel/maintenance && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
