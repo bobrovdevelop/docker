@@ -7,9 +7,6 @@ ARG UID
 ENV UID=${UID}
 ENV GID=${GID}
 
-RUN addgroup -S -g $GID www && \
-    adduser -D -u $UID -G www -s /bin/sh www
-
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 RUN addgroup -g ${GID} --system laravel
