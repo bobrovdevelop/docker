@@ -12,20 +12,20 @@ services:
     ports:
       - 8081:80
 
-  supervisor:
-    build:
-      dockerfile: ./docker/php-fpm
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    restart: always
-
-    depends_on:
-      - php-fpm
-    volumes:
-      - ./backend:/var/www:rw
-      - ./docker/php-fpm/laravel-worker.conf:/etc/supervisord.conf
-    command: supervisord
+ # supervisor:
+ #   build:
+ #     dockerfile: ./docker/php-fpm
+ #     args:
+ #       - UID=${UID:-1000}
+ #       - GID=${GID:-1000}
+ #   restart: always
+ #   depends_on:
+ #     - php-fpm
+ #   volumes:
+ #     - ./backend:/var/www:rw
+ #     - ./docker/php-fpm/laravel-worker.conf:/etc/supervisord.conf
+ #   command: supervisord
+#
 
   redis:
     image: redis:7.0-alpine
