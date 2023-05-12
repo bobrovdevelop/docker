@@ -26,11 +26,13 @@ services:
     image: redis:7.0-alpine
 
   php-fpm:
-    build: ./docker/php-fpm
+    build:
+      dockerfile: ./docker/php-fpm/Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     restart: always
-    args:
-      - UID=${UID}
-      - GID=${GID}
+
     depends_on:
       - db
     volumes:
