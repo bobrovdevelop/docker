@@ -28,6 +28,9 @@ services:
   php-fpm:
     build: ./docker/php-fpm
     restart: always
+    args:
+      - UID=${UID}
+      - GID=${GID}
     depends_on:
       - db
     volumes:
