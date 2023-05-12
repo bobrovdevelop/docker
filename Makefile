@@ -7,6 +7,5 @@ migrate:
 up:
 	docker compose up -d web php-fpm db
 stop:
-	docker compose stop
 env:
 	cp ./backend/.env.example ./backend/.env

@@ -1,5 +1,24 @@
 FROM php:8.1-fpm-alpine
 
+# Add PHP-user
+ARG GID
+ARG UID
+
+ENV UID=${UID}
+ENV GID=${GID}
+
+RUN addgroup -S -g $GID www && \
+    adduser -D -u $UID -G www -s /bin/sh www
+
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+RUN addgroup -g ${GID} --system laravel
+RUN adduser -G laravel --system -D -s /bin/sh -u ${UID} laravel
+
+RUN sed -i "s/user = www-data/user = laravel/g" /usr/local/etc/php-fpm.d/www.conf
+RUN sed -i "s/group = www-data/group = laravel/g" /usr/local/etc/php-fpm.d/www.conf
+RUN echo "php_admin_flag[log_errors] = on" >> /usr/local/etc/php-fpm.d/www.conf
+
 WORKDIR "/"
 
 RUN apk add --no-cache \
@@ -38,14 +57,25 @@ RUN apk add libzip-dev
 RUN docker-php-ext-install pdo pdo_pgsql zip bcmath
 RUN docker-php-ext-enable pdo pdo_pgsql
 
-ENV COMPOSER_ALLOW_SUPERUSER 1
+#ENV COMPOSER_ALLOW_SUPERUSER 1
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer --quiet
+# Install composer
 
-RUN chown -R www-data:www-data /var/www
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer --quiet
+
+
+#RUN chown -R www-data:www-data /var/www
 
 RUN apk add  supervisor && \
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* \
+
+USER laravel
+
+#USER $UID
+#COPY --chown=$UID:$GID . .
+#RUN composer install && \
+   # php artisan storage:link
+
 
 WORKDIR "/var/www"
 #USER www-data
